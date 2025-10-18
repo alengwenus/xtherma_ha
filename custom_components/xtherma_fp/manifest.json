@@ -4,8 +4,9 @@
   "codeowners": [
     "@xrad"
   ],
-  "version": "1.2.1",
-  "manifest_version": 1,
   "config_flow": true,
-  "integration_type": "device"
+  "documentation": "https://github.com/Xtherma/xtherma_ha",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "version": "1.2.1"
 }
