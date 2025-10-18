@@ -9,6 +9,7 @@
           "name": "Name des Integrationseintrags"
         }
       },
+      "$_/abc": {},
       "rest_api": {
         "description": "Zugangsdaten für das Fernportal",
         "data": {
