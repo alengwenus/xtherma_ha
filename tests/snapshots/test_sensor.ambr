@@ -2369,6 +2369,64 @@
     'state': '50.0',
   })
 # ---
+# name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_test_energy-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.test_entry_xtherma_modbus_config_test_energy',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:lightning-bolt',
+    'original_name': 'Test Energy',
+    'platform': 'xtherma_fp',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'fp_v',
+    'unique_id': 'test_entry_xtherma-fp_v',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_test_energy-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'test_entry_xtherma_modbus_config Test Energy',
+      'icon': 'mdi:lightning-bolt',
+      'parameter': 'fp_v',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.test_entry_xtherma_modbus_config_test_energy',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '3.98',
+  })
+# ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_tk1_circuit_1_temperature-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
