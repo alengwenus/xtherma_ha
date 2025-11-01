@@ -20,7 +20,7 @@ def test_json_load_value_fixture():
     assert len(settings) == 34
     telemetry = data.get("telemetry")
     assert isinstance(telemetry, list)
-    assert len(telemetry) == 54
+    assert len(telemetry) == 55
     t0 = telemetry[0]
     assert isinstance(t0, dict)
     assert t0.get("key") == "tvl"

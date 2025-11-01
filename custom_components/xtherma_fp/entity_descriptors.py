@@ -937,6 +937,15 @@ _sensor_evu = XtBinarySensorEntityDescription(
     icon_provider=_electric_switch_icon,
 )
 
+_sensor_fp_v = XtSensorEntityDescription(
+    key="fp_v",
+    native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
+    device_class=SensorDeviceClass.ENERGY,
+    state_class=SensorStateClass.TOTAL_INCREASING,
+    icon=_icon_electric_power,
+    factor="/100",
+)
+
 
 @dataclass(kw_only=True, frozen=True)
 class ModbusRegisterSet:
@@ -1127,6 +1136,13 @@ _MODBUS_TELEMETRY_PER_DAY_ENERGY = ModbusRegisterSet(
     ],
 )
 
+_MODBUS_TEST = ModbusRegisterSet(
+    base=184,
+    descriptors=[
+        _sensor_fp_v,
+    ],
+)
+
 MODBUS_ENTITY_DESCRIPTIONS: list[ModbusRegisterSet] = [
     _MODBUS_SETTINGS_GENERAL,
     _MODBUS_SETTINGS_HEATING_CURVE_1,
@@ -1142,6 +1158,7 @@ MODBUS_ENTITY_DESCRIPTIONS: list[ModbusRegisterSet] = [
     _MODBUS_TELEMETRY_OUTSIDE_TEMPERATURES,
     _MODBUS_TELEMETRY_PERFORMANCE_LIVE,
     _MODBUS_TELEMETRY_PER_DAY_ENERGY,
+    _MODBUS_TEST,
 ]
 
 ENTITY_DESCRIPTIONS: list[EntityDescription] = [

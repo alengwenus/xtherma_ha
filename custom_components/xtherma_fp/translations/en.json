@@ -254,6 +254,9 @@
       },
       "controller_v": {
         "name": "Controller version"
+      },
+      "fp_v": {
+        "name": "Test Energy"
       }
     },
     "switch": {
