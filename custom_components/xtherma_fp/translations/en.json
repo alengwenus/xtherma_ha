@@ -197,7 +197,7 @@
         "name": "Overall system power consumption (electric)"
       },
       "out_total": {
-        "name": "Overall system heat output (thermisch)"
+        "name": "Overall system heat output (thermal)"
       },
       "mode": {
         "name": "Current operating mode",
