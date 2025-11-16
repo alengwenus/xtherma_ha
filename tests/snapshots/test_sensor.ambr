@@ -1321,7 +1321,7 @@
     'state': '0.0',
   })
 # ---
-# name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_overall_system_heat_output_thermisch-entry]
+# name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_overall_system_heat_output_thermal-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -1336,7 +1336,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': None,
-    'entity_id': 'sensor.test_entry_xtherma_modbus_config_overall_system_heat_output_thermisch',
+    'entity_id': 'sensor.test_entry_xtherma_modbus_config_overall_system_heat_output_thermal',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -1351,7 +1351,7 @@
     }),
     'original_device_class': <SensorDeviceClass.POWER: 'power'>,
     'original_icon': 'mdi:heat-wave',
-    'original_name': 'Overall system heat output (thermisch)',
+    'original_name': 'Overall system heat output (thermal)',
     'platform': 'xtherma_fp',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -1361,18 +1361,18 @@
     'unit_of_measurement': <UnitOfPower.WATT: 'W'>,
   })
 # ---
-# name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_overall_system_heat_output_thermisch-state]
+# name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_overall_system_heat_output_thermal-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'power',
-      'friendly_name': 'test_entry_xtherma_modbus_config Overall system heat output (thermisch)',
+      'friendly_name': 'test_entry_xtherma_modbus_config Overall system heat output (thermal)',
       'icon': 'mdi:heat-wave',
       'parameter': 'out_total',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfPower.WATT: 'W'>,
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.test_entry_xtherma_modbus_config_overall_system_heat_output_thermisch',
+    'entity_id': 'sensor.test_entry_xtherma_modbus_config_overall_system_heat_output_thermal',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
