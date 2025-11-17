@@ -57,7 +57,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '20.0',
+    'state': '20',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_cooling_curve_1_cooling_temperature_high_p2-entry]
@@ -118,7 +118,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '20.0',
+    'state': '20',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_cooling_curve_1_cooling_temperature_low_p1-entry]
@@ -179,7 +179,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '25.0',
+    'state': '25',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_cooling_curve_1_outside_temperature_high_p2-entry]
@@ -240,7 +240,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '35.0',
+    'state': '35',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_cooling_curve_1_outside_temperature_low_p1-entry]
@@ -301,7 +301,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '28.0',
+    'state': '28',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_cooling_curve_2_constant_cooling_temperature-entry]
@@ -362,7 +362,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '20.0',
+    'state': '20',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_cooling_curve_2_cooling_temperature_high_p2-entry]
@@ -423,7 +423,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '20.0',
+    'state': '20',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_cooling_curve_2_cooling_temperature_low_p1-entry]
@@ -484,7 +484,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '29.0',
+    'state': '29',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_cooling_curve_2_outside_temperature_high_p2-entry]
@@ -545,7 +545,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '33.0',
+    'state': '33',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_cooling_curve_2_outside_temperature_low_p1-entry]
@@ -606,7 +606,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '33.0',
+    'state': '33',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_1_constant_heating_temperature-entry]
@@ -667,7 +667,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '29.0',
+    'state': '29',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_1_heating_temperature_high_p2-entry]
@@ -728,7 +728,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '22.0',
+    'state': '22',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_1_heating_temperature_low_p1-entry]
@@ -789,7 +789,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '32.0',
+    'state': '32',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_1_outside_temperature_high_p2-entry]
@@ -850,7 +850,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '14.0',
+    'state': '14',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_1_outside_temperature_low_p1-entry]
@@ -911,7 +911,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '-9.0',
+    'state': '-9',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_2_constant_heating_temperature-entry]
@@ -972,7 +972,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '35.0',
+    'state': '35',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_2_heating_temperature_high_p2-entry]
@@ -1033,7 +1033,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '25.0',
+    'state': '25',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_2_heating_temperature_low_p1-entry]
@@ -1094,7 +1094,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '35.0',
+    'state': '35',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_2_outside_temperature_high_p2-entry]
@@ -1155,7 +1155,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '18.0',
+    'state': '18',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_heating_curve_2_outside_temperature_low_p1-entry]
@@ -1216,7 +1216,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '-9.0',
+    'state': '-9',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_sg_ready_lower_cooling_temperature_by-entry]
@@ -1277,7 +1277,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_sg_ready_raise_heating_temperature_by-entry]
@@ -1338,7 +1338,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '5.0',
+    'state': '5',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_sg_ready_raise_warm_water_temperature_by-entry]
@@ -1399,7 +1399,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '10.0',
+    'state': '10',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_target_keep_water_warm-entry]
@@ -1460,7 +1460,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '45.0',
+    'state': '45',
   })
 # ---
 # name: test_setup_number_modbus_tcp[mock_modbus_tcp_client0][number.test_entry_xtherma_modbus_config_target_warm_water_production-entry]
@@ -1521,7 +1521,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '50.0',
+    'state': '50',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_1_constant_cooling_temperature-entry]
@@ -1582,7 +1582,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '20.0',
+    'state': '20',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_1_cooling_temperature_high_p2-entry]
@@ -1643,7 +1643,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '20.0',
+    'state': '20',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_1_cooling_temperature_low_p1-entry]
@@ -1704,7 +1704,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '25.0',
+    'state': '25',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_1_outside_temperature_high_p2-entry]
@@ -1765,7 +1765,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '35.0',
+    'state': '35',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_1_outside_temperature_low_p1-entry]
@@ -1826,7 +1826,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '28.0',
+    'state': '28',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_2_constant_cooling_temperature-entry]
@@ -1887,7 +1887,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '20.0',
+    'state': '20',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_2_cooling_temperature_high_p2-entry]
@@ -1948,7 +1948,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '20.0',
+    'state': '20',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_2_cooling_temperature_low_p1-entry]
@@ -2009,7 +2009,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '29.0',
+    'state': '29',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_2_outside_temperature_high_p2-entry]
@@ -2070,7 +2070,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '33.0',
+    'state': '33',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_cooling_curve_2_outside_temperature_low_p1-entry]
@@ -2131,7 +2131,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '33.0',
+    'state': '33',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_1_constant_heating_temperature-entry]
@@ -2192,7 +2192,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '29.0',
+    'state': '29',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_1_heating_temperature_high_p2-entry]
@@ -2253,7 +2253,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '22.0',
+    'state': '22',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_1_heating_temperature_low_p1-entry]
@@ -2314,7 +2314,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '32.0',
+    'state': '32',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_1_outside_temperature_high_p2-entry]
@@ -2375,7 +2375,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '14.0',
+    'state': '14',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_1_outside_temperature_low_p1-entry]
@@ -2436,7 +2436,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '-9.0',
+    'state': '-9',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_2_constant_heating_temperature-entry]
@@ -2497,7 +2497,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '35.0',
+    'state': '35',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_2_heating_temperature_high_p2-entry]
@@ -2558,7 +2558,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '25.0',
+    'state': '25',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_2_heating_temperature_low_p1-entry]
@@ -2619,7 +2619,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '35.0',
+    'state': '35',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_2_outside_temperature_high_p2-entry]
@@ -2680,7 +2680,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '18.0',
+    'state': '18',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_heating_curve_2_outside_temperature_low_p1-entry]
@@ -2741,7 +2741,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '-9.0',
+    'state': '-9',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_sg_ready_lower_cooling_temperature_by-entry]
@@ -2802,7 +2802,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_sg_ready_raise_heating_temperature_by-entry]
@@ -2863,7 +2863,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '5.0',
+    'state': '5',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_sg_ready_raise_warm_water_temperature_by-entry]
@@ -2924,7 +2924,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '10.0',
+    'state': '10',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_target_keep_water_warm-entry]
@@ -2985,7 +2985,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '45.0',
+    'state': '45',
   })
 # ---
 # name: test_setup_number_rest_api[mock_rest_api_client0][number.test_entry_xtherma_config_target_warm_water_production-entry]
@@ -3046,6 +3046,6 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '50.0',
+    'state': '50',
   })
 # ---

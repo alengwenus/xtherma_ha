@@ -96,16 +96,16 @@ async def test_get_negative_number_modbus(hass, mock_modbus_tcp_client):
     assert state.state == "-20.0"
 
     state = hass.states.get(SENSOR_ENTITY_ID_MODBUS_OUT_HP)
-    assert state.state == "-600.0"
+    assert state.state == "-600"
 
     state = hass.states.get(SENSOR_ENTITY_ID_MODBUS_DAY_HP_OUT_H)
     assert state.state == "-5000.0"
 
     state = hass.states.get(SENSOR_ENTITY_ID_MODBUS_LD1)
-    assert state.state == "-10.0"
+    assert state.state == "-10"
 
     state = hass.states.get(SENSOR_ENTITY_ID_MODBUS_V)
     assert state.state == "-110.0"
 
     state = hass.states.get(SENSOR_ENTITY_ID_MODBUS_VF)
-    assert state.state == "-15.0"
+    assert state.state == "-15"
