@@ -2,7 +2,6 @@
 
 import logging
 from datetime import timedelta
-from typing import Any
 
 from homeassistant.components.sensor import (
     SensorDeviceClass,
@@ -10,9 +9,6 @@ from homeassistant.components.sensor import (
 from homeassistant.helpers.entity import EntityDescription
 
 from .const import (
-    KEY_ENTRY_INPUT_FACTOR,
-    KEY_ENTRY_KEY,
-    KEY_ENTRY_VALUE,
     MODBUS_TIMEOUT_S,
 )
 from .entity_descriptors import (
@@ -56,7 +52,7 @@ class XthermaClientModbus(XthermaClient):
         self._port = port
         self._address = address
         self._desc_regset_cache: dict[str, int] = {}
-        self._last_update: list[dict[str, Any]] = []
+        self._last_update: dict[str, int | float] = {}
         self._read_buffer = [0] * MODBUS_REGISTER_SIZE
         self.detect_empty_modbus_data = True
 
@@ -104,6 +100,8 @@ class XthermaClientModbus(XthermaClient):
 
     # apply two's complement for negative scalar values.
     def _encode_int(self, signed_value: int, desc: EntityDescription) -> int:
+        if not isinstance(desc, XtNumericEntityDescription):
+            return signed_value
         if desc.device_class == SensorDeviceClass.ENUM:
             return signed_value
         if signed_value < 0:
@@ -168,32 +166,42 @@ class XthermaClientModbus(XthermaClient):
             if not desc:
                 _LOGGER.debug("no descriptor for %d.%d", reg_desc.base, i)
             else:
-                entry = {}
-                entry[KEY_ENTRY_KEY] = desc.key
                 raw_value = self._read_buffer[reg_desc.base + i]
-                value = self._decode_int(raw_value, desc)
-                entry[KEY_ENTRY_VALUE] = str(value)
-                if isinstance(desc, XtSensorEntityDescription):
-                    entry[KEY_ENTRY_INPUT_FACTOR] = desc.factor
+                decoded_value = self._decode_int(raw_value, desc)
+                if isinstance(desc, XtSensorEntityDescription) and desc.factor:
+                    input_factor = desc.factor
+                    value = self._apply_input_factor(decoded_value, input_factor)
                 else:
-                    entry[KEY_ENTRY_INPUT_FACTOR] = None
-                self._last_update.append(entry)
+                    input_factor = ""
+                    value = decoded_value
+                self._last_update[desc.key] = value
+                _LOGGER.debug(
+                    'key="%s" raw="%s" value="%s" inputfactor="%s"',
+                    desc.key,
+                    raw_value,
+                    value,
+                    input_factor,
+                )
 
-    async def async_get_data(self) -> list[dict[str, Any]]:
+    async def async_get_data(self) -> dict[str, int | float]:
         """Obtain fresh data."""
-        self._last_update = []
+        self._last_update = {}
         client = await self._get_client()
         await self._read_modbus_ranges(client)
         for reg_desc in MODBUS_ENTITY_DESCRIPTIONS:
             await self._read_bank(reg_desc)
         return self._last_update
 
-    async def async_put_data(self, value: int, desc: EntityDescription) -> None:
+    async def async_put_data(self, value: int | float, desc: EntityDescription) -> None:
         """Write data."""
         client = await self._get_client()
         try:
             address = self._get_register_address(desc.key)
-            encoded_value = self._encode_int(value, desc)
+            if isinstance(desc, XtSensorEntityDescription):
+                int_value = self._reverse_apply_input_factor(value, desc.factor)
+            else:
+                int_value = int(value)
+            encoded_value = self._encode_int(int_value, desc)
             _LOGGER.debug(
                 'Writing "%s" = %d @ address %d',
                 desc.key,

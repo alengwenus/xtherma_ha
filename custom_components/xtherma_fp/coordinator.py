@@ -12,11 +12,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 
 from .const import (
     DOMAIN,
-    KEY_ENTRY_INPUT_FACTOR,
-    KEY_ENTRY_KEY,
-    KEY_ENTRY_VALUE,
 )
-from .entity_descriptors import XtSensorEntityDescription
 from .xtherma_client_common import (
     XthermaModbusBusyError,
     XthermaModbusEmptyDataError,
@@ -36,30 +32,6 @@ if TYPE_CHECKING:
 
 _LOGGER = logging.getLogger(__name__)
 
-_FACTORS = {
-    "*1000": 1000,
-    "*100": 100,
-    "*10": 10,
-    "1000": 1000,
-    "100": 100,
-    "10": 10,
-    "/1000": 0.001,
-    "/100": 0.01,
-    "/10": 0.1,
-}
-
-_RFACTORS = {
-    "*1000": 0.001,
-    "*100": 0.01,
-    "*10": 0.1,
-    "1000": 0.001,
-    "100": 0.01,
-    "10": 0.1,
-    "/1000": 1000,
-    "/100": 100,
-    "/10": 10,
-}
-
 # Time in seconds the device needs to process a write request.
 # During this time, we block reads which would potentially restore
 # the old value.
@@ -68,11 +40,11 @@ _WRITE_SETTLE_TIME_S = 30
 
 @dataclass
 class _PendingWrite:
-    value: float
+    value: int | float
     blocked_until: datetime
 
 
-class XthermaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, float]]):
+class XthermaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, int | float]]):
     """Regularly Fetches data from API client."""
 
     _client: XthermaClient
@@ -105,20 +77,12 @@ class XthermaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, float]]):
         _LOGGER.debug("Coordinator _async_setup")
         await self._client.connect()
 
-    def _apply_input_factor(self, rawvalue: str, inputfactor: str | None) -> float:
-        value = float(rawvalue)
-        if not isinstance(inputfactor, str):
-            return value
-        factor = _FACTORS.get(inputfactor, 1.0)
-        return factor * value
-
-    async def _async_update_data(self) -> dict[str, float]:  # noqa: C901
-        result: dict[str, float] = {}
+    async def _async_update_data(self) -> dict[str, int | float]:  # noqa: C901
+        result: dict[str, int | float] = {}
         try:
             _LOGGER.debug("Coordinator requesting new data")
             client_data = await self._client.async_get_data()
-            for entry in client_data:
-                key = entry.get(KEY_ENTRY_KEY, "").lower()
+            for key, value in client_data.items():
                 pending_write = self._is_blocked(key)
                 if pending_write is not None:
                     result[key] = pending_write
@@ -127,20 +91,7 @@ class XthermaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, float]]):
                         key,
                     )
                 else:
-                    rawvalue = entry.get(KEY_ENTRY_VALUE, None)
-                    inputfactor = entry.get(KEY_ENTRY_INPUT_FACTOR, None)
-                    if key is None or rawvalue is None:
-                        _LOGGER.error("entry incomplete: %s", entry)
-                        continue
-                    value = self._apply_input_factor(rawvalue, inputfactor)
                     result[key] = value
-                    _LOGGER.debug(
-                        'key="%s" raw="%s" value="%s" inputfactor="%s"',
-                        key,
-                        rawvalue,
-                        value,
-                        inputfactor,
-                    )
         except XthermaModbusBusyError as err:
             raise UpdateFailed(
                 translation_domain=DOMAIN,
@@ -203,7 +154,7 @@ class XthermaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, float]]):
             return self._client.get_entity_descriptions()
         return []
 
-    def _block_for(self, key: str, seconds: int, value: float) -> None:
+    def _block_for(self, key: str, seconds: int, value: int | float) -> None:
         """Block reads for a specific register for N seconds."""
         _LOGGER.debug("Block reads of key %s for %d seconds", key, seconds)
         self._pending_writes[key] = _PendingWrite(
@@ -211,7 +162,7 @@ class XthermaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, float]]):
             value=value,
         )
 
-    def _is_blocked(self, key: str) -> float | None:
+    def _is_blocked(self, key: str) -> int | float | None:
         """Test if device-side processing for key is in progress."""
         # check if any keys are blocked
         if not self._pending_writes:
@@ -228,21 +179,11 @@ class XthermaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, float]]):
         # key is actually blocked
         return pending.value
 
-    def _reverse_apply_input_factor(self, value: float, inputfactor: str | None) -> int:
-        if not isinstance(inputfactor, str):
-            return int(value)
-        factor = _RFACTORS.get(inputfactor, 1.0)
-        return int(factor * value)
-
-    async def async_write(self, entity: Entity, value: float) -> None:
+    async def async_write(self, entity: Entity, value: int | float) -> None:
         """Add a write request to the queue."""
         desc = entity.entity_description
         try:
-            if isinstance(desc, XtSensorEntityDescription):
-                int_value = self._reverse_apply_input_factor(value, desc.factor)
-            else:
-                int_value = int(value)
-            await self._client.async_put_data(desc=desc, value=int_value)
+            await self._client.async_put_data(desc=desc, value=value)
             self._block_for(key=desc.key, seconds=_WRITE_SETTLE_TIME_S, value=value)
         except XthermaReadOnlyError as err:
             raise HomeAssistantError(
@@ -276,9 +217,8 @@ class XthermaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, float]]):
             return None
         if not self.last_update_success:
             return None
-        value = self.data.get(key, None)
-        if not isinstance(value, (int, float)):
-            msg = "Illegal data in coordinator key=%s value=<%s>"
+        value = self.data.get(key)
+        if value is None:
+            msg = "Missing data in coordinator key=%s"
             _LOGGER.error(msg)
-            return None
         return value
