@@ -107,7 +107,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_controller_version-entry]
@@ -1093,7 +1093,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_heat_output_heat_pump_thermal-entry]
@@ -1151,7 +1151,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_ld1_fan_1_speed-entry]
@@ -1208,7 +1208,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '5.0',
+    'state': '5',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_ld2_fan_2_speed-entry]
@@ -1265,7 +1265,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_overall_coefficient_of_performance_incl_auxiliary_heating-entry]
@@ -1376,7 +1376,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_overall_system_power_consumption_electric-entry]
@@ -1434,7 +1434,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_pkl_circulation_pump_performance-entry]
@@ -1546,7 +1546,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_power_consumption_heat_pump_electric-entry]
@@ -1604,7 +1604,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_sg_ready_status-entry]
@@ -2366,7 +2366,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '50.0',
+    'state': '50',
   })
 # ---
 # name: test_setup_sensor_modbus_tcp[mock_modbus_tcp_client0][sensor.test_entry_xtherma_modbus_config_tk1_circuit_1_temperature-entry]
@@ -2941,7 +2941,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_rest_api[mock_rest_api_client0][sensor.test_entry_xtherma_config_controller_version-entry]
@@ -3927,7 +3927,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_rest_api[mock_rest_api_client0][sensor.test_entry_xtherma_config_heat_output_heat_pump_thermal-entry]
@@ -3985,7 +3985,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_rest_api[mock_rest_api_client0][sensor.test_entry_xtherma_config_ld1_fan_1_speed-entry]
@@ -4042,7 +4042,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '5.0',
+    'state': '5',
   })
 # ---
 # name: test_setup_sensor_rest_api[mock_rest_api_client0][sensor.test_entry_xtherma_config_ld2_fan_2_speed-entry]
@@ -4099,7 +4099,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_rest_api[mock_rest_api_client0][sensor.test_entry_xtherma_config_overall_coefficient_of_performance_incl_auxiliary_heating-entry]
@@ -4264,7 +4264,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_rest_api[mock_rest_api_client0][sensor.test_entry_xtherma_config_power_consumption_heat_pump_electric-entry]
@@ -4322,7 +4322,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.0',
+    'state': '0',
   })
 # ---
 # name: test_setup_sensor_rest_api[mock_rest_api_client0][sensor.test_entry_xtherma_config_sg_ready_status-entry]
@@ -5084,7 +5084,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '50.0',
+    'state': '50',
   })
 # ---
 # name: test_setup_sensor_rest_api[mock_rest_api_client0][sensor.test_entry_xtherma_config_tk1_circuit_1_temperature-entry]

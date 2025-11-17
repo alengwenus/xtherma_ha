@@ -1,10 +1,35 @@
 """Common definitions for Xtherma client variants."""
 
 from abc import abstractmethod
+from collections.abc import Callable
 from datetime import timedelta
-from typing import Any
 
 from homeassistant.helpers.entity import EntityDescription
+
+Factor = Callable[[int], float | int]
+_FACTORS: dict[str, Callable] = {
+    "*1000": lambda value: value * 1000,
+    "*100": lambda value: value * 100,
+    "*10": lambda value: value * 10,
+    "1000": lambda value: value * 1000,
+    "100": lambda value: value * 100,
+    "10": lambda value: value * 10,
+    "/1000": lambda value: value / 1000,
+    "/100": lambda value: value / 100,
+    "/10": lambda value: value / 10,
+}
+
+_RFACTORS: dict[str, Callable] = {
+    "*1000": lambda value: value / 1000,
+    "*100": lambda value: value / 100,
+    "*10": lambda value: value / 10,
+    "1000": lambda value: value / 1000,
+    "100": lambda value: value / 100,
+    "10": lambda value: value / 10,
+    "/1000": lambda value: value * 1000,
+    "/100": lambda value: value * 100,
+    "/10": lambda value: value * 10,
+}
 
 
 class XthermaModbusBusyError(Exception):
@@ -99,12 +124,12 @@ class XthermaClient:
         raise NotImplementedError
 
     @abstractmethod
-    async def async_get_data(self) -> list[dict[str, Any]]:
+    async def async_get_data(self) -> dict[str, int | float]:
         """Obtain fresh data."""
         raise NotImplementedError
 
     @abstractmethod
-    async def async_put_data(self, value: int, desc: EntityDescription) -> None:
+    async def async_put_data(self, value: int | float, desc: EntityDescription) -> None:
         """Write data."""
         raise NotImplementedError
 
@@ -112,3 +137,15 @@ class XthermaClient:
     def get_entity_descriptions(self) -> list[EntityDescription]:
         """Get all entity descriptions."""
         raise NotImplementedError
+
+    def _apply_input_factor(self, value: int, inputfactor: str | None) -> int | float:
+        if not inputfactor:
+            return value
+        function = _FACTORS.get(inputfactor, lambda v: v)
+        return function(value)
+
+    def _reverse_apply_input_factor(self, value: float, inputfactor: str | None) -> int:
+        if not isinstance(inputfactor, str):
+            return int(value)
+        function = _RFACTORS.get(inputfactor, lambda v: v)
+        return function(value)

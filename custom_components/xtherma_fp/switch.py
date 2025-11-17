@@ -71,7 +71,7 @@ class XthermaSwitchEntity(XthermaCoordinatorEntity, SwitchEntity):
         value = self.coordinator.read_value(self.entity_description.key)
         if value is None:
             return
-        self._attr_is_on = value > 0
+        self._attr_is_on = value != 0
         self.async_write_ha_state()
 
     @property

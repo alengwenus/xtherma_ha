@@ -1,6 +1,7 @@
 """Client to access Fernportal REST API."""
 
 import asyncio
+import itertools
 import logging
 from datetime import UTC, datetime, timedelta
 from typing import Any
@@ -11,6 +12,9 @@ from homeassistant.helpers.entity import EntityDescription
 from .const import (
     FERNPORTAL_RATE_LIMIT_S,
     FERNPORTAL_TIMEOUT_S,
+    KEY_ENTRY_INPUT_FACTOR,
+    KEY_ENTRY_KEY,
+    KEY_ENTRY_VALUE,
     KEY_SETTINGS,
     KEY_TELEMETRY,
 )
@@ -55,7 +59,7 @@ class XthermaClientRest(XthermaClient):
     def _now(self) -> int:
         return int(datetime.now(UTC).timestamp())
 
-    async def async_get_data(self) -> list[dict[str, Any]]:
+    async def async_get_data(self) -> dict[str, int | float]:
         """Obtain fresh data."""
         headers = {"Authorization": f"Bearer {self._api_key}"}
         try:
@@ -64,17 +68,30 @@ class XthermaClientRest(XthermaClient):
                 self._url, timeout=timeout, headers=headers
             ) as response:
                 response.raise_for_status()
+                result: dict[str, int | float] = {}
                 json_data: dict[str, Any] = await response.json()
                 telemetry = json_data.get(KEY_TELEMETRY)
-                if not isinstance(telemetry, list):
-                    _LOGGER.error("Telemetry in REST API is not a list")
-                    return []
                 settings = json_data.get(KEY_SETTINGS)
-                if not isinstance(settings, list):
-                    _LOGGER.error("Settings in REST API is not a list")
-                    return []
-                telemetry.extend(settings)
-                return telemetry
+                if not isinstance(telemetry, list) or not isinstance(settings, list):
+                    _LOGGER.error("REST API response malformat")
+                    return result
+                for entry in itertools.chain(telemetry, settings):
+                    if (key := entry.get(KEY_ENTRY_KEY)) is None:
+                        continue
+                    if (raw_value := entry.get(KEY_ENTRY_VALUE)) is None:
+                        continue
+                    value = int(raw_value)
+                    if (input_factor := entry.get(KEY_ENTRY_INPUT_FACTOR)) is not None:
+                        value = self._apply_input_factor(value, input_factor)
+                    result[key] = value
+                    _LOGGER.debug(
+                        'key="%s" raw="%s" value="%s" inputfactor="%s"',
+                        key,
+                        raw_value,
+                        value,
+                        input_factor,
+                    )
+                return result
         except aiohttp.ClientResponseError as err:
             _LOGGER.debug("API error: %s", err)
             if err.status == 429:  # noqa: PLR2004
@@ -88,7 +105,7 @@ class XthermaClientRest(XthermaClient):
             raise XthermaError from err
         return []
 
-    async def async_put_data(self, value: int, desc: EntityDescription) -> None:
+    async def async_put_data(self, value: int | float, desc: EntityDescription) -> None:
         """Write data."""
         del value
         del desc
