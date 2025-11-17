@@ -20,6 +20,7 @@ ignore = [
   "E501",   # Line too long ({width} > {limit})
   "EXE002", # The file is executable but no shebang is present
   "FBT001", # Boolean-typed positional argument in function definition
+  "PYI041", # Redundant numeric union
 
   # May conflict with the formatter, https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
   "W191",
