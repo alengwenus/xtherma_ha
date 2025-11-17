@@ -14,7 +14,6 @@ from pytest_homeassistant_custom_component.common import (
 
 from custom_components.xtherma_fp.const import (
     DOMAIN,
-    KEY_ENTRY_INPUT_FACTOR,
     KEY_ENTRY_KEY,
     KEY_ENTRY_VALUE,
     KEY_SETTINGS,
@@ -49,32 +48,8 @@ def load_mock_data(filename: str) -> JsonValueType:
 
     The JSON file is expected to be an exact dump of the REST API response
     as documented on https://github.com/Xtherma/xtherma_api.
-
-    The same mock data is used for REST API and Modbus/TCP tests where
-    possible. However, the Modbus/TCP interface provides more data
-    than what is received via REST, so we manually enrich the data
-    read from file.
     """
-    mock_data = load_json_value_fixture(filename)
-    assert isinstance(mock_data, dict)
-    # add registers only available via Modbus
-    settings = mock_data[KEY_SETTINGS]
-    assert isinstance(settings, list)
-    settings.append(
-        {
-            KEY_ENTRY_KEY: "in_total",
-            KEY_ENTRY_VALUE: "0",
-            KEY_ENTRY_INPUT_FACTOR: "*10",
-        },
-    )
-    settings.append(
-        {
-            KEY_ENTRY_KEY: "out_total",
-            KEY_ENTRY_VALUE: "0",
-            KEY_ENTRY_INPUT_FACTOR: "*10",
-        },
-    )
-    return mock_data
+    return load_json_value_fixture(filename)
 
 
 def flatten_mock_data(mock_data: JsonValueType) -> list[dict[str, Any]]:
@@ -85,14 +60,6 @@ def flatten_mock_data(mock_data: JsonValueType) -> list[dict[str, Any]]:
     flattened_mock_data = telemetry
     flattened_mock_data.extend(settings)
     return flattened_mock_data
-
-
-def find_entry(flattened_mock_data: list[dict], key: str) -> dict[str, Any]:
-    """Find entry by key in flattened mock data."""
-    for entry in flattened_mock_data:
-        if entry[KEY_ENTRY_KEY] == key:
-            return entry
-    pytest.fail(f"Unknown key {key}")
 
 
 def provide_rest_data(
@@ -150,11 +117,16 @@ def provide_modbus_data(
     # get mock data from file and write it to the correct
     # register positions
     mock_data = load_mock_data("rest_response.json")
+
     all_values = flatten_mock_data(mock_data)
     for entry in all_values:
         key = entry[KEY_ENTRY_KEY]
         value = int(str(entry[KEY_ENTRY_VALUE]))
         set_modbus_register(regs_list, key, value)
+
+    # The rest data does not define these values
+    set_modbus_register(regs_list, "in_total", 0)
+    set_modbus_register(regs_list, "out_total", 0)
 
     return param
 
