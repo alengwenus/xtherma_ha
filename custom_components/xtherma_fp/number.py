@@ -48,7 +48,7 @@ class XthermaNumberEntity(XthermaCoordinatorEntity, NumberEntity):
         value = self.coordinator.read_value(self.entity_description.key)
         if value is None:
             return
-        self._attr_native_value = value
+        self._attr_native_value = self._align_native_value_type(value)
         self.async_write_ha_state()
 
     @property
@@ -61,11 +61,26 @@ class XthermaNumberEntity(XthermaCoordinatorEntity, NumberEntity):
     async def async_set_native_value(self, value: float) -> None:
         """Set value."""
         try:
-            await self.coordinator.async_write(self, value=value)
-            self._attr_native_value = value
+            native_value = self._align_native_value_type(value)
+            await self.coordinator.async_write(self, value=native_value)
+            self._attr_native_value = native_value
             self.async_write_ha_state()
         except HomeAssistantError:
             self._attr_force_update = True
             self.async_write_ha_state()
             self._attr_force_update = False
             raise
+
+    @property
+    def native_type_is_int(self) -> bool:
+        """Tell if native values are of type int."""
+        if not hasattr(self, "_native_type_is_int"):
+            self._native_type_is_int = isinstance(
+                self.entity_description.native_min_value, int
+            ) and isinstance(self.entity_description.native_step, int)
+        return self._native_type_is_int
+
+    def _align_native_value_type(self, value: float | int) -> float | int:
+        # enforce internal type, so frontend will show decimal places only
+        # when relevant.
+        return int(value) if self.native_type_is_int else value
