@@ -83,8 +83,8 @@ async def test_set_number_modbus(hass, mock_modbus_tcp_client):
     kwargs = mock_modbus_tcp_client.write_register.call_args.kwargs
     # verify arguments passed to write_register()
     assert kwargs["address"] == 41
-    assert hass.states.get(NUMBER_ENTITY_ID_MODBUS_451).state == "16.0"
-    assert kwargs["value"] == 16.0
+    assert hass.states.get(NUMBER_ENTITY_ID_MODBUS_451).state == "16"
+    assert kwargs["value"] == 16
     assert kwargs["slave"] == 1
 
 
@@ -106,6 +106,6 @@ async def test_set_negative_number_modbus(hass, mock_modbus_tcp_client):
     kwargs = mock_modbus_tcp_client.write_register.call_args.kwargs
     # verify arguments passed to write_register()
     assert kwargs["address"] == 31
-    assert hass.states.get(NUMBER_ENTITY_ID_MODBUS_411).state == "-20.0"
+    assert hass.states.get(NUMBER_ENTITY_ID_MODBUS_411).state == "-20"
     assert kwargs["value"] == (20 ^ 65535) + 1
     assert kwargs["slave"] == 1
