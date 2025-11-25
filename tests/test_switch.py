@@ -80,7 +80,7 @@ async def test_set_switch_modbus(hass, mock_modbus_tcp_client):
     # verify arguments passed to write_register()
     assert kwargs["address"] == 40
     assert kwargs["value"] == 0
-    assert kwargs["slave"] == 1
+    assert kwargs["device_id"] == 1
 
     await hass.services.async_call(
         DOMAIN,
@@ -94,4 +94,4 @@ async def test_set_switch_modbus(hass, mock_modbus_tcp_client):
     # verify arguments passed to write_register()
     assert kwargs["address"] == 40
     assert kwargs["value"] == 1
-    assert kwargs["slave"] == 1
+    assert kwargs["device_id"] == 1

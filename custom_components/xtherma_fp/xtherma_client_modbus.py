@@ -19,7 +19,7 @@ from .entity_descriptors import (
     XtNumericEntityDescription,
     XtSensorEntityDescription,
 )
-from .vendor.pymodbus import AsyncModbusTcpClient, ExceptionResponse, ModbusException
+from .vendor.pymodbus import AsyncModbusTcpClient, ExcCodes, ModbusException
 from .xtherma_client_common import (
     XthermaClient,
     XthermaError,
@@ -126,7 +126,7 @@ class XthermaClientModbus(XthermaClient):
             regs = await client.read_holding_registers(
                 address=address,
                 count=length,
-                slave=int(self._address),
+                device_id=int(self._address),
             )
         except ModbusException as err:
             _LOGGER.debug("Modbus exception: %s", err.string)
@@ -137,7 +137,7 @@ class XthermaClientModbus(XthermaClient):
         else:
             if regs.isError():
                 exc_code = regs.exception_code
-                if exc_code == ExceptionResponse.SLAVE_BUSY:
+                if exc_code == ExcCodes.DEVICE_BUSY:
                     _LOGGER.debug("Modbus device busy")
                     raise XthermaModbusBusyError
                 _LOGGER.debug("Modbus error %s", regs.exception_code)
@@ -211,7 +211,7 @@ class XthermaClientModbus(XthermaClient):
             regs = await client.write_register(
                 address=address,
                 value=encoded_value,
-                slave=int(self._address),
+                device_id=int(self._address),
             )
         except Exception as err:
             _LOGGER.exception("Exception error")
@@ -219,7 +219,7 @@ class XthermaClientModbus(XthermaClient):
         else:
             if regs.isError():
                 exc_code = regs.exception_code
-                if exc_code == ExceptionResponse.SLAVE_BUSY:
+                if exc_code == ExcCodes.DEVICE_BUSY:
                     _LOGGER.error("Device busy")
                     raise XthermaModbusBusyError
                 _LOGGER.error("Modbus write error %s", exc_code)
