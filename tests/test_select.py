@@ -75,4 +75,4 @@ async def test_set_select_modbus(hass, mock_modbus_tcp_client):
     # verify arguments passed to write_register()
     assert kwargs["address"] == 1
     assert kwargs["value"] == 0
-    assert kwargs["slave"] == 1
+    assert kwargs["device_id"] == 1
